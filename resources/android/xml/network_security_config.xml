@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">192.168.1.9</domain>
+        <domain includeSubdomains="true">192.168.1.16</domain>
+        <domain includeSubdomains="true">https://f2fb-2800-bf0-830c-1104-e0a0-fd55-abfb-2347.sa.ngrok.io</domain>
+    </domain-config>
+</network-security-config>

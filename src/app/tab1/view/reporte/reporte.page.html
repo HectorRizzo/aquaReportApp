@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuevo reporte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-spinner color="primary" class="page-loader" *ngIf="loading" name="crescent"></ion-spinner>
+
+  <div *ngIf="!loading">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Fecha</ion-label>
+        <ion-input readonly value="{{ (reporte.fecha | date: 'dd/MM/yyyy') }}" placeholder="Enter text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Ubicación</ion-label>
+        <!-- 'lat: '+reporte.latitud+', long: '+reporte.longitud -->
+        <ion-input readonly value="{{ reporte.ubicacion }}" placeholder="Enter text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Imagen</ion-label>
+        <!-- <ion-input placeholder="Enter text"></ion-input> -->
+        <img class="img-reporte" *ngIf="reporte.imagen" [src]="reporte.imagen" alt="image">
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Comentario</ion-label>
+        <ion-textarea row="3" [autoGrow]="true" maxlength="200" placeholder="Breve descripción de la situación..." [(ngModel)]="reporte.descripcion"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" class="ion-text-center" (click)="subirReporte()"><ion-icon name="arrow-up-circle"></ion-icon>{{ ' Enviar' }}</ion-button>
+  </div>
+
+</ion-content>

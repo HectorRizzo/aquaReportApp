@@ -1,0 +1,82 @@
+<ion-header class="ion-no-border header" [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title class="titulo">Histórico de Mantenimiento </ion-title>
+  </ion-toolbar>
+  <img src="../../../assets/img/logo.svg" class="logo" alt="logo">
+</ion-header>  
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>Fecha inicio</ion-label>
+    <ion-input
+      value="{{ filter.fecha_desde | date: 'dd/MM/yyyy' }}"
+      id="fechaInicio"
+      class="ion-text-end"
+    ></ion-input>
+    <ion-popover trigger="fechaInicio" size="cover">
+      <ng-template>
+        <ion-datetime
+          presentation="fechaInicio"
+          [(ngModel)]="filter.fecha_desde"
+          locale="es-ES"
+        ></ion-datetime>
+      </ng-template>
+    </ion-popover>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha fin</ion-label>
+    <ion-input
+      value="{{ filter.fecha_hasta | date: 'dd/MM/yyyy' }}"
+      id="fechaFin"
+      class="ion-text-end"
+    ></ion-input>
+    <ion-popover trigger="fechaFin" size="cover">
+      <ng-template>
+        <ion-datetime
+          presentation="fechaFin"
+          [(ngModel)]="filter.fecha_hasta"
+          locale="es-ES"
+        ></ion-datetime>
+      </ng-template>
+    </ion-popover>
+  </ion-item>
+  <ion-item (click)="getReportesFI()">
+    <ion-label>Aplicar filtros</ion-label>
+    <ion-icon size="small" slot="end" name="search"></ion-icon>
+  </ion-item>
+
+  <ion-spinner color="primary" class="page-loader" *ngIf="loading" name="crescent"></ion-spinner>
+
+  <div *ngIf="!loading">
+    <div *ngIf="reportesFI.length===0">
+      <img src="../../../assets/img/no-data.png">
+    </div>
+    <ion-card *ngFor="let r of reportesFI, let i = index">
+      <img alt="Silhouette of mountains" src="{{r.imagen ?? 'https://ionicframework.com/docs/img/demos/card-media.png'}}" />
+      <ion-card-header>
+        <ion-card-title>
+                <div class="title">
+                  <div>
+                    {{ (r.fechahora_finalizo | date: 'MM/dd/yyyy') }}
+                    <ion-icon color="success" name="calendar-outline"></ion-icon>
+                  </div>
+                  <div>
+                    {{ (r.fechahora_finalizo | date: 'h:mm a') }}
+                    <ion-icon color="primary" name="time-outline"></ion-icon>
+                  </div>
+                </div>
+              </ion-card-title>        
+              <ion-card-content class="contenido">
+                {{ r.ubicacion ? ('Ubicación: '+r.ubicacion) : ('lat:' + r.latitud + ', long:' + r.longitud) }}
+                  <ion-icon color="danger" name="map-outline"></ion-icon>
+              </ion-card-content>
+          </ion-card-header>
+    
+      <ion-card-content>
+        <ion-card-subtitle><b>Descripción: </b></ion-card-subtitle>
+        {{ r.descripcion }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

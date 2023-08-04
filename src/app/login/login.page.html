@@ -1,0 +1,37 @@
+<ion-header class="ion-no-border header" [translucent]="true">
+  <ion-back-button>
+    <ion-icon name="arrow-back-outline" color="primary"></ion-icon>
+  </ion-back-button>
+  <ion-toolbar class="toolbar">
+    <ion-title class="titulo">
+      Iniciar Sesión </ion-title>
+  </ion-toolbar>
+  <img src="../../../assets/img/logo.svg" class="logo" alt="logo">
+</ion-header> 
+
+
+<ion-content>
+  <br><br><br>
+  <img class="login-logo" src="/assets/img/main_logo.png">
+  <ion-spinner color="primary" class="page-loader" *ngIf="loading" name="crescent"></ion-spinner>
+  <form class="m-form" *ngIf="!loading">
+    <br>
+    <ion-item class="trans-bg k-rounded" lines="full">
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input maxlength="50" [(ngModel)]="user.email" name="correo" type="text" required></ion-input>
+    </ion-item>
+    <ion-item class="trans-bg k-rounded" lines="full">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input maxlength="20" [(ngModel)]="user.password" name="pass" type="password" required></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <!-- [routerLink]="['/tabs']" -->
+        <ion-button text-center (click)="login()"  color="secondary" shape="round">Iniciar sesión</ion-button>
+        <!-- <a [routerLink]="['/forgot-pass']" class="small-text">¿Olvidaste tu Contraseña?</a> -->
+      </ion-col><ion-col>    
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

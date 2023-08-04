@@ -1,0 +1,62 @@
+
+<ion-header class="ion-no-border header" [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{usuario.id==0?'Crear Usuario':'Editar Usuario'}}</ion-title>
+  </ion-toolbar>
+  <img src="../../../assets/img/logo.svg" class="logo" alt="logo">
+</ion-header>
+
+<ion-content>
+  <ion-spinner color="primary" class="page-loader" *ngIf="loading" name="crescent"></ion-spinner>
+
+  <!-- <form> -->
+    
+    <div *ngIf="!loading">
+      <ion-item lines="full">
+        <ion-label position="floating">Nombres <b><ion-text color="danger" > *</ion-text></b></ion-label>
+        <ion-input maxlength="50" type="text" [(ngModel)]="usuario.nombre" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Apellidos <b><ion-text color="danger" > *</ion-text></b></ion-label>
+        <ion-input maxlength="50" type="text" [(ngModel)]="usuario.apellido" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Correo electrónico <b><ion-text color="danger" > *</ion-text></b></ion-label>
+        <ion-input maxlength="50" type="text" [(ngModel)]="usuario.email" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Contraseña <b><ion-text color="danger" > *</ion-text></b></ion-label>
+        <ion-input maxlength="20" type="password" [(ngModel)]="usuario.password" required></ion-input>
+      </ion-item>
+      <!-- <ion-item lines="full">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" required></ion-input>
+      </ion-item>-->
+      <ion-item> 
+        <ion-label position="stacked">Tipo de usuario <b><ion-text color="danger" > *</ion-text></b></ion-label>
+        <ion-select interface="popover" [placeholder]="getPlaceholder('tipo')" [(ngModel)]="usuario.id_tipo_usuario">
+          <ion-select-option disabled [value]="0">Seleccione un tipo de usuario</ion-select-option>
+          <ion-select-option *ngFor="let t of tipoUsuarioList" [value]="t.id_tipo_usuario">{{t.tipo}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Estado<b><ion-text color="danger" > *</ion-text></b></ion-label>
+        <ion-select interface="popover" [placeholder]="getPlaceholder('estado')" [(ngModel)]="usuario.estado">
+          <ion-select-option disabled [value]="0">Seleccione un estado</ion-select-option>
+          <ion-select-option *ngFor="let e of estadoList" [value]="e.valor">{{e.descripcion}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="round" (click)="guardarData()">Guardar cambios</ion-button>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </div>
+    
+  <!-- </form> -->
+</ion-content>

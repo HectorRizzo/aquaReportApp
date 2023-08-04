@@ -1,0 +1,179 @@
+<ion-header class="ion-no-border header" [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title class="titulo">Gestión Reportes </ion-title>
+  </ion-toolbar>
+  <img src="../../../assets/img/logo.svg" class="logo" alt="logo">
+</ion-header>  
+<ion-content [fullscreen]="true">
+
+  <ion-segment mode="ios" [(ngModel)]="segment">
+    
+    <ion-segment-button value="emitidos">
+      <ion-label>Emitidos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="con_problemas">
+      <ion-label>Con Problemas</ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+
+  <ion-spinner color="primary" class="page-loader" *ngIf="loading" name="crescent"></ion-spinner>
+  <div *ngIf="!loading" [ngSwitch]="segment" class="container">
+    <div *ngSwitchCase="'emitidos'">
+      
+      <div *ngIf="reportesEM.length===0">
+        <img src="../../../assets/img/no-data.png">
+      </div>
+      <ion-card class="card" *ngFor="let r of reportesEM, let i = index">
+        <div *ngIf="!r.expand" >
+          <ion-card-header>
+            <ion-toolbar>
+              <ion-card-title>
+                <div class="title">
+                  <div>
+                    {{ (r.fechahora | date: 'MM/dd/yyyy') }}
+                    <ion-icon color="success" name="calendar-outline"></ion-icon>
+                  </div>
+                  <div>
+                    {{ (r.fechahora | date: 'h:mm a') }}
+                    <ion-icon color="primary" name="time-outline"></ion-icon>
+                  </div>
+                </div>
+              </ion-card-title>
+              <ion-card-content class="contenido">
+                {{ r.ubicacion ? ('Ubicación: '+r.ubicacion) : ('lat:' + r.latitud + ', long:' + r.longitud) }}
+                  <ion-icon color="danger" name="map-outline"></ion-icon>
+              </ion-card-content>
+              <ion-buttons slot="end">
+                <ion-button (click)="expand(r)"> 
+                  <ion-icon color="primary" size="large" name="chevron-forward-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-card-header>
+        </div> 
+        <div *ngIf="r.expand" >
+          <div class="title-expanded">
+            <div class="fecha">
+              {{ (r.fechahora | date: 'MM/dd/yyyy') }}
+              <ion-icon color="success" name="calendar-outline"></ion-icon>
+            </div>
+            <div class="fecha">
+              {{ (r.fechahora | date: 'h:mm a') }}
+              <ion-icon color="primary" name="time-outline"></ion-icon>
+            </div>
+            <ion-button fill="clear" (click)="expand(r)"> 
+              <ion-icon name="chevron-up"></ion-icon>
+            </ion-button>
+          </div>
+          <img alt="Silhouette of mountains" src="{{r.imagen ?? 'https://ionicframework.com/docs/img/demos/card-media.png'}}" />
+          <ion-card-header>          
+            <ion-card-subtitle>{{ r.ubicacion ? ('Ubicación: '+r.ubicacion) : ('lat:' + r.latitud + ', long:' + r.longitud) }}
+              <ion-icon color="danger" name="map-outline"></ion-icon>
+            </ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-card-subtitle><b>Descripción: </b></ion-card-subtitle>
+            {{ r.descripcion }}
+          </ion-card-content>
+          <ion-toolbar class="card-btns">
+            <ion-buttons slot="start">
+              <ion-button shape="round" fill="solid" color="danger" (click)="presentAlert(r)">
+                Eliminar
+              </ion-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+              <ion-button shape="round" fill="solid" color="primary" (click)="goAsignarReporte(r)">
+                Asignar
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </div> 
+        
+      </ion-card>
+    </div>
+  
+    <div *ngSwitchCase="'con_problemas'">
+
+      <div *ngIf="reportesPR.length===0">
+        <img src="../../../assets/img/no-data.png">
+      </div>
+      <ion-card class="card" *ngFor="let r of reportesPR, let i = index">
+        <div *ngIf="!r.expand" >
+          <ion-card-header>
+            <ion-toolbar>
+              <ion-card-title>
+                <div class="title">
+                  <div>
+                    {{ (r.fechahora | date: 'MM/dd/yyyy') }}
+                    <ion-icon color="success" name="calendar-outline"></ion-icon>
+                  </div>
+                  <div>
+                    {{ (r.fechahora | date: 'h:mm a') }}
+                    <ion-icon color="primary" name="time-outline"></ion-icon>
+                  </div>
+                </div>
+              </ion-card-title>
+              <ion-card-content class="contenido">
+                {{ r.ubicacion ? ('Ubicación: '+r.ubicacion) : ('lat:' + r.latitud + ', long:' + r.longitud) }}
+                  <ion-icon color="danger" name="map-outline"></ion-icon>
+              </ion-card-content>
+              <ion-buttons slot="end">
+                <ion-button (click)="expand(r)"> 
+                  <ion-icon color="primary" size="large" name="chevron-forward-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-card-header>
+        </div> 
+        <div *ngIf="r.expand" >
+          <div class="title-expanded">
+            <div class="fecha">
+              {{ (r.fechahora | date: 'MM/dd/yyyy') }}
+              <ion-icon color="success" name="calendar-outline"></ion-icon>
+            </div>
+            <div class="fecha">
+              {{ (r.fechahora | date: 'h:mm a') }}
+              <ion-icon color="primary" name="time-outline"></ion-icon>
+            </div>
+            <ion-button fill="clear" (click)="expand(r)"> 
+              <ion-icon name="chevron-up"></ion-icon>
+            </ion-button>
+          </div>
+          <img alt="Silhouette of mountains" src="{{r.imagen ?? 'https://ionicframework.com/docs/img/demos/card-media.png'}}" />
+          <ion-card-header>
+            
+            <ion-card-subtitle>{{ r.ubicacion ? ('Ubicación: '+r.ubicacion) : ('lat:' + r.latitud + ', long:' + r.longitud) }}
+              <ion-icon color="danger" name="map-outline"></ion-icon>
+            </ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-card-subtitle><b>Descripción: </b></ion-card-subtitle>
+            {{ r.comentario_mantenimiento }}
+          </ion-card-content>
+          <ion-toolbar class="card-btns">
+            <!-- <ion-buttons slot="start">
+              <ion-button fill="clear" color="danger" (click)="presentAlert(r)">
+                <ion-icon name="close" size="large"></ion-icon>
+              </ion-button>
+            </ion-buttons> -->
+            <ion-buttons slot="end">
+              <ion-button shape="round" fill="solid" color="primary" (click)="goAsignarReporte(r)">
+                Asignar              
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+          <!-- <ion-fab-button size="small" (click)="goAsignarReporte(r)">
+            <ion-icon name="open"></ion-icon>
+          </ion-fab-button> -->
+        </div> 
+        
+      </ion-card>
+
+    </div>
+
+  </div>
+
+</ion-content>

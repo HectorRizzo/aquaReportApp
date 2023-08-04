@@ -1,0 +1,13 @@
+
+<ion-header class="ion-no-border header" [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title class="titulo">Reportes </ion-title>
+  </ion-toolbar>
+  <img src="../../../assets/img/logo.svg" class="logo" alt="logo">
+</ion-header> 
+
+<ion-content padding>
+  <img *ngIf="image" [src]="image" alt="image">
+  <ion-button expand="block" class="ion-text-center" (click)="takePicture()"><ion-icon name="camera"></ion-icon>{{ noFoto?' Tomar foto':' Cambiar foto' }}</ion-button>
+  <ion-button color="primary" [disabled]="noFoto" expand="block" class="ion-text-center" (click)="goReporte()"><ion-icon name="clipboard"></ion-icon>{{ ' Realizar reporte' }}</ion-button>
+</ion-content>

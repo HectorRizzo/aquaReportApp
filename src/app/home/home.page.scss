@@ -1,0 +1,163 @@
+
+ion-content.background{
+    --background: url("../../assets/img/fondo.svg") no-repeat center center / cover;
+}
+
+.card{
+    border-radius: 10px;
+  }
+  .trans-bg{
+    border-radius: 12px;
+  }
+  .titulo{
+    text-align: start;
+    color: #fff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 38px;
+    margin-bottom: 1rem;
+  }
+  .subtitulo{
+    text-align: start;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 22px;
+    margin-bottom: 2rem;
+  }
+  .title{
+    display: flex;
+    justify-content: space-between;
+    font-size: smaller;
+  }
+  .title-expanded{
+    display: flex;
+    justify-content: space-between;
+    font-size: medium;
+  }
+  .container{
+    margin : 0 1rem 0 1rem;
+  }
+  .contenido{
+  padding-left: 0px;
+  }
+  .header{
+  display: flex;
+  }
+  .fecha{
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+  
+  .toolbar{
+  --background: #e5f3ff;
+  }
+  .logo{
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  }
+  .botones {
+    position: fixed;
+    bottom: 3rem;
+    left: 0;
+    width: 100%;
+  }
+  .login{
+    --background: #0487FF;
+    --border-radius: 10px;
+    --color: #fff;
+    --padding-start: 14px;
+    --padding-end: 14px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    margin: 0 3rem;
+  }
+  .register{
+    --background: #fff;
+    --border-radius: 10px;
+    --color: #0487FF;
+    --padding-start: 14px;
+    --padding-end: 14px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    margin: 0 3rem;
+
+  }
+
+  ion-list {
+    --color: #000;
+    --border-color: #fff;
+    --detail-icon-color: white;
+    --detail-icon-opacity: 1;
+    --detail-icon-font-size: 20px;
+    --background: none;
+  }
+  
+  ion-item {
+    --color: #000;
+    --border-color: #fff;
+    --detail-icon-color: white;
+    --detail-icon-opacity: 1;
+    --detail-icon-font-size: 20px;
+    --background: none;
+  }
+  
+  ion-header{
+    background: #e5f3ff;
+  }
+  
+  ion-icon{
+    font-size: 25px;
+    margin-top: 10px;
+  }
+  ion-segment {
+    background: none;
+  }
+  
+  ion-segment-button {
+    background: #fff;
+  }
+  
+  ion-segment-button::part(indicator-background) {
+    background: #0487FF;
+  }
+  
+  /* Material Design styles */
+  ion-segment-button.md::part(native) {
+    color: #000;
+  }
+  
+  .segment-button-checked.md::part(native) {
+    color: #0487FF;
+  }
+  
+  ion-segment-button.md::part(indicator-background) {
+    height: 4px;
+  }
+  
+  /* iOS styles */
+  ion-segment-button.ios::part(native) {
+    color: #0487FF;
+  }
+  
+  .segment-button-checked.ios::part(native) {
+    color: #fff;
+  }
+  
+  ion-segment-button.ios::part(indicator-background) {
+    border-radius: 20px;
+  }
+  
+  ion-title.title-large {
+    // color: #c897d8;
+    font-size: 30px;
+  }
+  
+  ion-title {
+    --color: #000;
+  }
+  
+  ion-toolbar {
+  
+  }

@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border header" [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title class="titulo">Cerrar Reporte</ion-title>
+  </ion-toolbar>
+  <img src="../../../assets/img/logo.svg" class="logo" alt="logo">
+</ion-header>  
+
+<ion-content>
+  <ion-spinner color="primary" class="page-loader" *ngIf="loading" name="crescent"></ion-spinner>
+
+  <div id="map" class="minimap"></div>
+  <div *ngIf="!loading">
+      <ion-item>
+        <ion-label position="stacked">Ubicación</ion-label>
+        <div class="item-input">
+          <ion-icon color="danger" name="map-outline"></ion-icon>
+        <ion-input readonly value="{{ reporte.ubicacion ? (reporte.ubicacion) : ('lat:' + reporte.latitud + ', long:' + reporte.longitud) }}" placeholder="Enter text"></ion-input>
+      </div>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Imagen</ion-label>
+        <!-- <ion-input placeholder="Enter text"></ion-input> -->
+        <img class="img-reporte" *ngIf="reporte.imagen" [src]="reporte.imagen" alt="image">
+      </ion-item>   
+      <ion-item>
+        <ion-label position="stacked">Estado <b><ion-text color="danger" > *</ion-text></b></ion-label>
+        <ion-select interface="popover" [(ngModel)]="new_reporte.fase" (ionChange)="handleFase($event)">
+          <ion-select-option disabled [value]="0">Seleccione un estado</ion-select-option>
+          <ion-select-option *ngFor="let p of faseList" [value]="p.valor">{{p.descripcion}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="problemas">
+        <ion-label position="floating">Comentario de mantenimiento <b><ion-text color="danger" > *</ion-text></b></ion-label>
+        <ion-textarea row="3" [autoGrow]="true" maxlength="200" placeholder="Describa el problema..." [(ngModel)]="new_reporte.comentario_mantenimiento"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="!problemas">
+        <ion-label position="stacked">Fecha de Finalizacion <b><ion-text color="danger" > *</ion-text></b></ion-label>
+        <div class="item-input">
+          <ion-icon color="success" name="calendar-outline"></ion-icon>
+        <ion-input readonly value="{{ (new_reporte.fecha_finalizo | date: 'dd/MM/yyyy') }}" placeholder="Enter text"></ion-input>
+        </div>
+      </ion-item>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-button shape="round" class="ion-text-center" (click)="cerrarReporte()">Cerrar</ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    
+  </div>
+
+</ion-content>

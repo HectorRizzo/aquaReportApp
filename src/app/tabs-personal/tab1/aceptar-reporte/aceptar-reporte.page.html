@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border header" [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title class="titulo">Aceptar Reporte</ion-title>
+  </ion-toolbar>
+  <img src="../../../assets/img/logo.svg" class="logo" alt="logo">
+</ion-header>  
+
+<ion-content>
+  <ion-spinner color="primary" class="page-loader" *ngIf="loading" name="crescent"></ion-spinner>
+  
+  <div id="map" class="minimap"></div>
+  <div *ngIf="!loading">
+      <ion-item>
+        <ion-label position="stacked">Fecha de Asignación</ion-label>
+        <div class="item-input">
+        <ion-icon color="success" name="calendar-outline"></ion-icon>
+        <ion-input readonly value="{{ (reporte.fecha_asignacion | date: 'dd/MM/yyyy') }}" placeholder="Enter text"></ion-input>    
+      </div>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Hora de Asignación</ion-label>
+        <div class="item-input">
+          <ion-icon color="primary" name="time-outline"></ion-icon>
+        <ion-input readonly value="{{ (reporte.fecha_asignacion | date: 'dd/MM/yyyy') }}" placeholder="Enter text"></ion-input>       
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Ubicación</ion-label>
+        <div class="item-input">
+          <ion-icon color="danger" name="map-outline"></ion-icon>
+          <ion-input readonly value="{{ reporte.ubicacion ? (reporte.ubicacion) : ('lat:' + reporte.latitud + ', long:' + reporte.longitud) }}" placeholder="Enter text"></ion-input>
+      </div>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Imagen</ion-label>
+        <!-- <ion-input placeholder="Enter text"></ion-input> -->
+        <img class="img-reporte" *ngIf="reporte.imagen" [src]="reporte.imagen" alt="image">
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">{{reporte.comentario_mantenimiento?'Comentario mantenimiento':'Descripción'}}</ion-label>
+        <ion-textarea readonly row="3" [autoGrow]="true" maxlength="200" placeholder="Breve descripción de la situación..." [value]="reporte.comentario_mantenimiento??reporte.descripcion"></ion-textarea>
+      </ion-item>
+  
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-button shape="round" class="ion-text-center" (click)="aceptarReporte()">Aceptar</ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    
+  </div>
+  
+</ion-content>

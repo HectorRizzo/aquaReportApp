@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-spinner color="primary" class="page-loader" *ngIf="loading" name="crescent"></ion-spinner>
+  <form class="m-form" *ngIf="!loading">
+    <ion-item class="trans-bg k-rounded" lines="full">
+      <ion-label position="floating">Nombres</ion-label>
+      <ion-input maxlength="50" [(ngModel)]="user.nombre" type="text" name="name" required></ion-input>
+    </ion-item>
+    <ion-item class="trans-bg k-rounded" lines="full">
+      <ion-label position="floating">Apellidos</ion-label>
+      <ion-input maxlength="50" [(ngModel)]="user.apellido" type="text" name="lastname" required></ion-input>
+    </ion-item>
+    <ion-item class="trans-bg k-rounded" lines="full">
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input maxlength="50" [(ngModel)]="user.email"  type="text" name="email" required></ion-input>
+    </ion-item>
+    <ion-item class="trans-bg k-rounded" lines="full">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input maxlength="20" [(ngModel)]="user.password"  type="password" name="pass" required></ion-input>
+    </ion-item>
+    <ion-item class="trans-bg k-rounded" lines="full">
+      <ion-label position="floating">Confirmar contraseña</ion-label>
+      <ion-input maxlength="20" [(ngModel)]="user.password_confirmation" name="pass2" type="password" required></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-button shape="round" type="submit" color="primary" (click)="register()">Registrarse</ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </form>
+</ion-content>
