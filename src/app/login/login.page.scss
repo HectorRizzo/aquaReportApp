@@ -1,4 +1,63 @@
+ion-header {
+  background: #0487FF;
+}
 
+ion-content {
+  height: 100vh;
+  --background: url("../../assets/img/login.png") no-repeat center center / cover;
+
+}
+ion-input {
+  border-bottom: 2px solid #5b9bd1 !important;
+  margin-bottom: 2rem !important;
+}
+.container {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  width: 100%;
+}
+.botones{
+  text-align: center;
+  left: 0;
+  width: 100%;
+}
+.sinCuenta{
+  color: #aeaeae;
+  font-family: sans-serif;
+  font-size: 10px;
+}
+.login{
+  --background: #0487FF;
+  --border-radius: 10px;
+  --color: #fff;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  margin: 0 3rem 0.5rem;
+}
+.register{
+  --background: #fff;
+  --border-radius: 10px;
+  --color: #0487FF;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  margin: 0.5rem 3rem 0;
+
+}
+.credentials{
+  --background: #fff;
+  --border-radius: 10px;
+  --color: #0487FF;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  margin: 0 3rem;
+}
 .card{
     border-radius: 10px;
   }
@@ -7,8 +66,12 @@
   }
   .titulo{
     text-align: center;
-    color: #0487FF;
+    color: #fff;
     font-family: sans-serif;
+  }
+  .back{
+    --background: #0487FF;
+    color: #fff;
   }
   .title{
     display: flex;
@@ -20,11 +83,7 @@
     justify-content: space-between;
     font-size: medium;
   }
-  .container{
-  --padding-start: 14px;
-    --padding-end: 14px;
-  font-size: smaller;
-  }
+
   .contenido{
   padding-left: 0px;
   }
@@ -37,7 +96,8 @@
   }
   
   .toolbar{
-  --background: #e5f3ff;
+    --background: #0487FF;
+    color: #fff;
   }
   .logo{
   width: 30px;
@@ -47,26 +107,11 @@
   margin-right: 10px;
   }
   
-  ion-list {
-    --color: #000;
-    --border-color: #fff;
-    --detail-icon-color: white;
-    --detail-icon-opacity: 1;
-    --detail-icon-font-size: 20px;
-    --background: none;
-  }
-  
-  ion-item {
-    --color: #000;
-    --border-color: #fff;
-    --detail-icon-color: white;
-    --detail-icon-opacity: 1;
-    --detail-icon-font-size: 20px;
-    --background: none;
-  }
-  
-  ion-header{
-    background: #e5f3ff;
+
+
+  ion-toolbar {
+    --background-color: transparent;
+    --ion-color-base: transparent !important;
   }
   
   ion-icon{
@@ -77,9 +122,7 @@
     background: none;
   }
   
-  ion-segment-button {
-    background: #fff;
-  }
+
   
   ion-segment-button::part(indicator-background) {
     background: #0487FF;
@@ -103,9 +146,7 @@
     color: #0487FF;
   }
   
-  .segment-button-checked.ios::part(native) {
-    color: #fff;
-  }
+
   
   ion-segment-button.ios::part(indicator-background) {
     border-radius: 20px;

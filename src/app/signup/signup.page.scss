@@ -1,0 +1,167 @@
+ion-header {
+    background: #0487FF;
+  }
+  
+  ion-content {
+    height: 100vh;
+    --background: url("../../assets/img/registro.png") no-repeat center center / cover;
+  
+  }
+  ion-input {
+    border-bottom: 2px solid #5b9bd1 !important;
+    margin-bottom: 1rem !important;
+  }
+  .container {
+    position: fixed;
+    bottom: 1rem;
+    left: 0;
+    width: 100%;
+  }
+  .botones{
+    text-align: center;
+    left: 0;
+    width: 100%;
+  }
+  .sinCuenta{
+    color: #aeaeae;
+    font-family: sans-serif;
+    font-size: 10px;
+  }
+  .login{
+    --background: #fff;
+    --border-radius: 10px;
+    --color: #0487FF;
+    --padding-start: 14px;
+    --padding-end: 14px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    margin: 0.5rem 3rem 0;
+  }
+  .register{
+  
+    --background: #0487FF;
+    --border-radius: 10px;
+    --color: #fff;
+    --padding-start: 14px;
+    --padding-end: 14px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    margin: 0 3rem 0.5rem;
+  }
+  .credentials{
+    --background: #fff;
+    --border-radius: 10px;
+    --color: #0487FF;
+    --padding-start: 14px;
+    --padding-end: 14px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    margin: 0 3rem;
+  }
+  .card{
+      border-radius: 10px;
+    }
+    .trans-bg{
+      border-radius: 12px;
+    }
+    .titulo{
+      text-align: center;
+      color: #fff;
+      font-family: sans-serif;
+    }
+    .back{
+      --background: #0487FF;
+      color: #fff;
+    }
+    .title{
+      display: flex;
+      justify-content: space-between;
+      font-size: smaller;
+    }
+    .title-expanded{
+      display: flex;
+      justify-content: space-between;
+      font-size: medium;
+    }
+  
+    .contenido{
+    padding-left: 0px;
+    }
+    .header{
+    display: flex;
+    }
+    .fecha{
+      margin-top: 15px;
+      margin-left: 10px;
+    }
+    
+    .toolbar{
+      --background: #0487FF;
+      color: #fff;
+    }
+    .logo{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    }
+    
+  
+  
+    ion-toolbar {
+      --background-color: transparent;
+      --ion-color-base: transparent !important;
+    }
+    
+    ion-icon{
+      font-size: 25px;
+      margin-top: 10px;
+    }
+    ion-segment {
+      background: none;
+    }
+    
+  
+    
+    ion-segment-button::part(indicator-background) {
+      background: #0487FF;
+    }
+    
+    /* Material Design styles */
+    ion-segment-button.md::part(native) {
+      color: #000;
+    }
+    
+    .segment-button-checked.md::part(native) {
+      color: #0487FF;
+    }
+    
+    ion-segment-button.md::part(indicator-background) {
+      height: 4px;
+    }
+    
+    /* iOS styles */
+    ion-segment-button.ios::part(native) {
+      color: #0487FF;
+    }
+    
+  
+    
+    ion-segment-button.ios::part(indicator-background) {
+      border-radius: 20px;
+    }
+    
+    ion-title.title-large {
+      // color: #c897d8;
+      font-size: 30px;
+    }
+    
+    ion-title {
+      --color: #000;
+    }
+    
+    ion-toolbar {
+    
+    }
+    

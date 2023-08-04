@@ -10,6 +10,7 @@ import { GeneralService } from '../services/general.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  show = false;
 
   user: any = {
     id: 0,
@@ -89,6 +90,9 @@ export class SignupPage implements OnInit {
         this.loading = false;
       }
     );
+  }
+  showPassword() {
+    this.show = !this.show;
   }
 
 }

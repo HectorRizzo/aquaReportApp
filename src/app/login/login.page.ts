@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
     email: '',
     password: '',
   };
-
+  show = false;
   loading = false;
 
   constructor(private route: Router,
@@ -96,6 +96,9 @@ export class LoginPage implements OnInit {
         this.loading = false;
       }
     );
+  }
+  showPassword() {
+    this.show = !this.show;
   }
 
 }
