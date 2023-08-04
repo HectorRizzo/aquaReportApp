@@ -64,9 +64,9 @@ ion-content.background{
     width: 100%;
   }
   .login{
-    --background: #0487FF;
+    --background: #fff;
     --border-radius: 10px;
-    --color: #fff;
+    --color: #0487FF;
     --padding-start: 14px;
     --padding-end: 14px;
     --padding-top: 10px;
@@ -74,9 +74,10 @@ ion-content.background{
     margin: 0 3rem;
   }
   .register{
-    --background: #fff;
+
+    --background: #0487FF;
     --border-radius: 10px;
-    --color: #0487FF;
+    --color: #fff;
     --padding-start: 14px;
     --padding-end: 14px;
     --padding-top: 10px;
