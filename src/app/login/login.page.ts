@@ -86,6 +86,9 @@ export class LoginPage implements OnInit {
         }else if(tipo==3){
           sessionStorage.setItem('userGuard', 'admin');
           this.route.navigate(['/tabs-admin']);
+        }else if(tipo==4){
+          sessionStorage.setItem('userGuard', 'lectura');
+          this.route.navigate(['/tabs-lectura']);
         }else{
           this.commonSrv.errorToast('Error en el sistema, intente de nuevo más tarde');
           return;
