@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class NoAuthGuard implements CanActivate {
+export class AuthLecturaGuard implements CanActivate {
 
   constructor(public navCtrl: NavController){ }
 
@@ -15,21 +15,12 @@ export class NoAuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
       const guard = sessionStorage.getItem('userGuard');
-      if(guard){
-        if(guard=='espol'){
-          this.navCtrl.navigateRoot('tabs');
-        }else if(guard=='personal'){
-          this.navCtrl.navigateRoot('tabs-personal');
-        }else if(guard=='admin'){
-          this.navCtrl.navigateRoot('tabs-admin');
-        }else if(guard=='lectura'){
-          this.navCtrl.navigateRoot('tabs-lectura');
-        }
-        return false;
-      }else{
+      if(guard=='lectura'){
         return true;
+      }else{
+        this.navCtrl.navigateRoot('home');
+        return false;
       }
-
   }
 
 }

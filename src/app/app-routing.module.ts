@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
 import { AuthEspolGuard } from './guards/auth-espol.guard';
 import { AuthPersonalGuard } from './guards/auth-personal.guard';
+import { AuthLecturaGuard } from './guards/auth-lectura.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
 
 const routes: Routes = [
@@ -46,6 +47,12 @@ const routes: Routes = [
     loadChildren: () => import('./tabs-personal/tabs-personal.module').then( m => m.TabsPersonalPageModule),
     canActivate: [AuthPersonalGuard]
   },
+  {
+    path: 'tabs-lectura',
+    loadChildren: () => import('./tabs-lectura/tabs-lectura.module').then( m => m.TabsLecturaPageModule),
+    canActivate: [AuthLecturaGuard]
+  },
+
 ];
 @NgModule({
   imports: [

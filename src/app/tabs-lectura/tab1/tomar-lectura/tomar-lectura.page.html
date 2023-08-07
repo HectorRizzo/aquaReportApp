@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border header" [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title class="titulo">Tomar Lectura</ion-title>
+  </ion-toolbar>
+  <img src="../../../assets/img/logo.svg" class="logo" alt="logo">
+</ion-header>  
+
+<ion-content>
+  <ion-spinner color="primary" class="page-loader" *ngIf="isLoading" name="crescent"></ion-spinner>
+  
+  <div id="map" class="minimap"></div>
+  <div *ngIf="!isLoading">
+      <ion-item>
+        <ion-label position="stacked">Medidor</ion-label>
+        <div class="item-input">
+          <ion-icon color="danger" name="map-outline"></ion-icon>
+          <ion-input readonly value="{{ reporte.nombreMedidor ?? 'Sin nombre' }}" placeholder="Enter text"></ion-input>
+      </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Última Medición</ion-label>
+        <div class="item-input">
+          <ion-icon color="danger" name="map-outline"></ion-icon>
+          <ion-input readonly value="{{ reporte.ultima_lectura ?? 'No tiene lectura previa' }}" placeholder="Enter text"></ion-input>
+      </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Nueva Medición</ion-label>
+        <div class="item-input">
+          <ion-icon color="danger" name="map-outline"></ion-icon>
+          <ion-input #valorMedicion type="number" pattern="^\d*\.?\d*$" placeholder="Ingrese la Nueva Medición"></ion-input>
+      </div>
+      </ion-item>
+  
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-button shape="round" class="ion-text-center" (click)="guardarLectura(valorMedicion.value)">Guardar</ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    
+  </div>
+  
+</ion-content>
