@@ -11,18 +11,20 @@ export class Tab1Page implements OnInit {
 
   reportesPE: any[] = [];
   reportesFI: any[] = [];
+  dataUser: any;
 
   constructor(
     private http: HttpClient,
     private route: Router) {}
 
   ngOnInit(): void {
+    this.dataUser = JSON.parse(sessionStorage.getItem('dataUser'));
     this.fetchReportesPE();
     this.fetchReportesFI();
   }
 
   fetchReportesPE(): void {
-    this.http.get('http://localhost:3000/getLecturasPendientes').subscribe(
+    this.http.get(`http://localhost:3000/getLecturaPorIdUsuarioP/${this.dataUser.id}`).subscribe(
       (data: any) => {
         this.reportesPE = data.data; 
       },
@@ -33,7 +35,7 @@ export class Tab1Page implements OnInit {
   }
 
   fetchReportesFI(): void {
-    this.http.get('http://localhost:3000/getLecturasFinalizadas').subscribe(
+    this.http.get(`http://localhost:3000/getLecturaPorIdUsuarioF/${this.dataUser.id}`).subscribe(
       (data: any) => {
         this.reportesFI = data.data;
       },

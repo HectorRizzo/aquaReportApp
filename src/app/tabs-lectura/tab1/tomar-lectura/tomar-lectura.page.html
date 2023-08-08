@@ -8,12 +8,11 @@
 <ion-content>
   <ion-spinner color="primary" class="page-loader" *ngIf="isLoading" name="crescent"></ion-spinner>
   
-  <div id="map" class="minimap"></div>
   <div *ngIf="!isLoading">
       <ion-item>
         <ion-label position="stacked">Medidor</ion-label>
         <div class="item-input">
-          <ion-icon color="danger" name="map-outline"></ion-icon>
+          <ion-icon color="danger" name="time-outline"></ion-icon>
           <ion-input readonly value="{{ reporte.nombreMedidor ?? 'Sin nombre' }}" placeholder="Enter text"></ion-input>
       </div>
       </ion-item>
@@ -21,15 +20,20 @@
       <ion-item>
         <ion-label position="stacked">Última Medición</ion-label>
         <div class="item-input">
-          <ion-icon color="danger" name="map-outline"></ion-icon>
+          <!-- <ion-icon color="danger" name="map-outline"></ion-icon> -->
           <ion-input readonly value="{{ reporte.ultima_lectura ?? 'No tiene lectura previa' }}" placeholder="Enter text"></ion-input>
       </div>
       </ion-item>
 
       <ion-item>
+        <ion-label position="stacked">Ubicación del Medidor</ion-label>
+        <div style="margin-top: 18px;" id="map" class="minimap"></div>
+      </ion-item>
+
+      <ion-item>
         <ion-label position="stacked">Nueva Medición</ion-label>
         <div class="item-input">
-          <ion-icon color="danger" name="map-outline"></ion-icon>
+          <ion-icon color="primary" name="time-outline"></ion-icon>
           <ion-input #valorMedicion type="number" pattern="^\d*\.?\d*$" placeholder="Ingrese la Nueva Medición"></ion-input>
       </div>
       </ion-item>

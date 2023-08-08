@@ -38,18 +38,14 @@
                     <ion-icon color="success" name="calendar-outline"></ion-icon>
                   </div>
                   <div>
-                    {{ (r.fecha_proxima_lectura | date: 'h:mm a') }}
-                    <ion-icon color="primary" name="time-outline"></ion-icon>
+                    {{ r.nombreMedidor ?? 'Sin nombre' }}
+                    <ion-icon color="danger" name="time-outline"></ion-icon>
                   </div>
                 </div>
               </ion-card-title>
               <ion-card-content class="contenido">
-                {{ r.nombreMedidor ?? 'Sin nombre' }}
-                <ion-icon color="danger" name="map-outline"></ion-icon>
-              </ion-card-content>
-              <ion-card-content class="contenido">
-                {{ r.ultima_lectura ?? 'No tiene lectura previa' }}
-                <ion-icon color="danger" name="map-outline"></ion-icon>
+                Última Medición: {{ r.ultima_lectura ?? 'No tiene lectura previa' }}
+                <!-- <ion-icon color="danger" name="map-outline"></ion-icon> -->
               </ion-card-content>              
               <ion-buttons slot="end">
                 <ion-button (click)="onIconClick(r)"> 
@@ -80,18 +76,14 @@
                     <ion-icon color="success" name="calendar-outline"></ion-icon>
                   </div>
                   <div>
-                    {{ (r.fecha_ultima_lectura | date: 'h:mm a') }}
-                    <ion-icon color="primary" name="time-outline"></ion-icon>
+                    {{ r.nombreMedidor ?? 'Sin nombre' }}
+                    <ion-icon color="danger" name="time-outline"></ion-icon>
                   </div>
                 </div>
               </ion-card-title>
               <ion-card-content class="contenido">
-                {{ r.nombreMedidor ?? 'Sin nombre' }}
-                <ion-icon color="danger" name="map-outline"></ion-icon>
-              </ion-card-content>
-              <ion-card-content class="contenido">
-                {{ r.ultima_lectura ?? 'No tiene lectura previa' }}
-                <ion-icon color="danger" name="map-outline"></ion-icon>
+                Última Medición: {{ r.ultima_lectura ?? 'No tiene lectura previa' }}
+                <!-- <ion-icon color="danger" name="map-outline"></ion-icon> -->
               </ion-card-content>              
 
             </ion-toolbar>
