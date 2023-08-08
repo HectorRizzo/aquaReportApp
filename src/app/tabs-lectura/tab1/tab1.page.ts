@@ -34,6 +34,19 @@ export class Tab1Page implements OnInit {
     );
   }
 
+  adjustDate(fecha: string): string {
+    // Se creará un objeto Date interpretando la fecha como UTC.
+    const dateObject = new Date(fecha);
+  
+    if (isNaN(dateObject.getTime())) {
+      return fecha;  // Si el objeto de fecha es inválido, simplemente devuelve la fecha original.
+    }
+    
+    // Devuelve la fecha en formato YYYY-MM-DD sin ajustes de zona horaria.
+    return `${dateObject.getUTCFullYear()}-${('0' + (dateObject.getUTCMonth() + 1)).slice(-2)}-${('0' + dateObject.getUTCDate()).slice(-2)}`;
+  }  
+ 
+
   fetchReportesFI(): void {
     this.http.get(`http://localhost:3000/getLecturaPorIdUsuarioF/${this.dataUser.id}`).subscribe(
       (data: any) => {

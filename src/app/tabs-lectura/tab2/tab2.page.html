@@ -63,7 +63,7 @@
             <ion-card-title>
               <div class="title">
                 <div>
-                  {{ (r.fecha_lectura | date: 'MM/dd/yyyy') }}
+                  {{ adjustDate(r.fecha_lectura) | date: 'dd/MM/yy' }}
                   <ion-icon color="success" name="calendar-outline"></ion-icon>
                 </div>
                 <div>

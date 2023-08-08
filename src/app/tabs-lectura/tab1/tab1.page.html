@@ -34,7 +34,7 @@
               <ion-card-title>
                 <div class="title">
                   <div>
-                    {{ (r.fecha_proxima_lectura | date: 'MM/dd/yyyy') }}
+                    {{ adjustDate(r.fecha_proxima_lectura) | date: 'dd/MM/yy' }}
                     <ion-icon color="success" name="calendar-outline"></ion-icon>
                   </div>
                   <div>
@@ -72,7 +72,7 @@
               <ion-card-title>
                 <div class="title">
                   <div>
-                    {{ (r.fecha_ultima_lectura | date: 'MM/dd/yyyy') }}
+                    {{ adjustDate(r.fecha_ultima_lectura) | date: 'dd/MM/yy' }}
                     <ion-icon color="success" name="calendar-outline"></ion-icon>
                   </div>
                   <div>
