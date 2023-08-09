@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Map, tileLayer, marker } from 'leaflet';
 import { GeneralService } from 'src/app/services/general.service';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-tomar-lectura',
@@ -21,6 +22,7 @@ export class TomarLecturaPage implements OnInit {
     private http: HttpClient,
     private commonSrv: GeneralService,
     private route: Router,
+    private global: GlobalService
   ) { }
 
   ngOnInit(): void {
@@ -68,6 +70,7 @@ export class TomarLecturaPage implements OnInit {
           data => {
             console.log('Se guardo la lectura PUT');
             this.commonSrv.successToast('Información guardada con éxito!');
+            this.global.refreshData(true);
             this.route.navigate(['/tabs-lectura/tab1']);
           },
           err => {
@@ -75,7 +78,7 @@ export class TomarLecturaPage implements OnInit {
             this.commonSrv.errorToast('Error al guardar la lectura.');
           }
         );
-        this.http.post<any>(`http://localhost:3000/agregarLecturaHistorica`, {id_lectura_historica: 61, medidor: this.reporte.id_medidor, lectura: valor}).subscribe(
+        this.http.post<any>(`http://localhost:3000/agregarLecturaHistorica`, {medidor: this.reporte.id_medidor, lectura: valor}).subscribe(
           data => {
             console.log('Se guardo la lectura POST');
           },
@@ -88,6 +91,7 @@ export class TomarLecturaPage implements OnInit {
           data => {
             console.log('Se guardo la lectura PUT');
             this.commonSrv.successToast('Información guardada con éxito!');
+            this.global.refreshData(true);
             this.route.navigate(['/tabs-lectura/tab1']);
           },
           err => {
@@ -95,7 +99,7 @@ export class TomarLecturaPage implements OnInit {
             this.commonSrv.errorToast('Error al guardar la lectura.');
           }
         );
-        this.http.post<any>(`http://localhost:3000/agregarLecturaHistorica`, {id_lectura_historica: 61, medidor: this.reporte.id_medidor, lectura: valor}).subscribe(
+        this.http.post<any>(`http://localhost:3000/agregarLecturaHistorica`, {medidor: this.reporte.id_medidor, lectura: valor}).subscribe(
           data => {
             console.log('Se guardo la lectura POST');
           },
