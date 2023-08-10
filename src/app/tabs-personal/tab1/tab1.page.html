@@ -34,7 +34,7 @@
               <ion-card-title>
                 <div class="title">
                   <div>
-                    {{ (r.fechahora_asignacion | date: 'MM/dd/yyyy') }}
+                    {{ (r.fechahora_asignacion | date: 'dd/MM/yyyy') }}
                     <ion-icon color="success" name="calendar-outline"></ion-icon>
                   </div>
                   <div>
@@ -58,7 +58,7 @@
         <div *ngIf="r.expand">
           <div class="title-expanded">
             <div class="fecha">
-              {{ (r.fechahora_asignacion | date: 'MM/dd/yyyy') }}
+              {{ (r.fechahora_asignacion | date: 'dd/MM/yyyy') }}
               <ion-icon color="success" name="calendar-outline"></ion-icon>
             </div>
             <div class="fecha">
@@ -77,6 +77,8 @@
           </ion-card-header>
         
           <ion-card-content>
+            <ion-card-subtitle><b>Ubicación: </b></ion-card-subtitle>
+            <div [id]="'map' + i" style="height: 300px; width: 100%;"></div>
             <ion-card-subtitle><b>Descripción: </b></ion-card-subtitle>
             {{ r.descripcion }}
             <div *ngIf="r.comentario_admin">
@@ -109,7 +111,7 @@
               <ion-card-title>
                 <div class="title">
                   <div>
-                    {{ (r.fechahora_asignacion | date: 'MM/dd/yyyy') }}
+                    {{ (r.fechahora_asignacion | date: 'dd/MM/yyyy') }}
                     <ion-icon color="success" name="calendar-outline"></ion-icon>
                   </div>
                   <div>
@@ -133,7 +135,7 @@
         <div *ngIf="r.expand" >
           <div class="title-expanded">
             <div class="fecha">
-              {{ (r.fechahora_asignacion | date: 'MM/dd/yyyy') }}
+              {{ (r.fechahora_asignacion | date: 'dd/MM/yyyy') }}
               <ion-icon color="success" name="calendar-outline"></ion-icon>
             </div>
             <div class="fecha">
@@ -146,7 +148,7 @@
           </div>
           <img alt="Silhouette of mountains" src="{{r.imagen ?? 'https://ionicframework.com/docs/img/demos/card-media.png'}}" />
           <ion-card-header>
-            <!-- <ion-card-title>{{ (r.fechahora_asignacion | date: 'MM/dd/yyyy, h:mm a') }}
+            <!-- <ion-card-title>{{ (r.fechahora_asignacion | date: 'dd/MM/yyyy, h:mm a') }}
               <button size="small"> 
                 <ion-icon (click)="expand(r)" name="chevron-up"></ion-icon>
               </button>
@@ -156,6 +158,8 @@
           </ion-card-header>
 
           <ion-card-content>
+            <ion-card-subtitle><b>Ubicación: </b></ion-card-subtitle>
+            <div [id]="'map' + i" style="height: 300px; width: 100%;"></div>
             <ion-card-subtitle><b>Descripción: </b></ion-card-subtitle>
             {{ r.descripcion }}
             <div *ngIf="r.comentario_admin">

@@ -5,6 +5,8 @@ import * as moment from 'moment';
 import { GeneralService } from 'src/app/services/general.service';
 import { GlobalService } from 'src/app/services/global.service';
 import { PersonalService } from 'src/app/services/personal.service';
+import * as L from 'leaflet';
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-tab1',
@@ -25,6 +27,9 @@ export class Tab1Page implements OnInit {
   reportesEC: any = [];
   prioridadList: any = [];
 
+  maps: any[] = [];
+
+
   loading = true;
 
   constructor(
@@ -32,7 +37,8 @@ export class Tab1Page implements OnInit {
     private apiSrv: PersonalService,
     private commonSrv: GeneralService,
     private alertController: AlertController,
-    private global: GlobalService
+    private global: GlobalService,
+    private renderer: Renderer2
   ) {
     this.global.getObservable().subscribe(
       (data)=>{
@@ -57,6 +63,21 @@ export class Tab1Page implements OnInit {
 
     this.getCatalogos();
   }
+
+  loadMap(r, i) {
+    const map = L.map('map' + i).setView([r.latitud, r.longitud], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+    }).addTo(map);
+
+    L.marker([r.latitud, r.longitud]).addTo(map)
+      .bindPopup('Ubicación del reporte')
+      .openPopup();
+
+    this.maps.push(map);
+}
+
 
   getCatalogos() {
     this.loading = true;
@@ -99,6 +120,7 @@ export class Tab1Page implements OnInit {
           this.reportesAS.push(e);
 
         });
+        console.log(this.reportesAS);
         this.getReportesEC();
       },
       (err) => {
@@ -129,6 +151,7 @@ export class Tab1Page implements OnInit {
           this.reportesEC.push(e);
         });
         this.loading = false;
+        console.log(this.reportesEC);
       },
       (err) => {
         this.commonSrv.errorToast('Error al cargar reportes');
@@ -139,6 +162,17 @@ export class Tab1Page implements OnInit {
 
   expand(item){
     item.expand = !item.expand;
+    if (item.expand) {
+      if (item.fase === 'AS') {
+      setTimeout(() => {
+          this.loadMap(item, this.reportesAS.indexOf(item));
+      }, 0);
+    } else {
+      setTimeout(() => {
+        this.loadMap(item, this.reportesEC.indexOf(item));
+    }, 0);
+    }
+  }
   }
 
   async presentAlert(r) {

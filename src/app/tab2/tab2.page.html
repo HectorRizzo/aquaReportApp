@@ -55,7 +55,7 @@
     <ion-card *ngFor="let r of reportes, let i = index">
       <img alt="Silhouette of mountains" src="{{r.imagen ?? 'https://ionicframework.com/docs/img/demos/card-media.png'}}" />
       <ion-card-header>
-        <ion-card-title>{{ (r.fechahora | date: 'MM/dd/yyyy, h:mm a') }}</ion-card-title>
+        <ion-card-title>{{ (r.fechahora | date: 'dd/MM/yyyy, h:mm a') }}</ion-card-title>
         <!-- 'lat:' + r.latitud + ', long:' + r.longitud -->
         <ion-card-subtitle>{{ r.ubicacion ? ('Ubicación: '+r.ubicacion) : ('lat:' + r.latitud + ', long:' + r.longitud) }}</ion-card-subtitle>
       </ion-card-header>
