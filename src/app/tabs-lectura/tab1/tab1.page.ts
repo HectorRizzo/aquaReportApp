@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: './tab1.page.html',
   styleUrls: ['./tab1.page.scss'],
 })
-export class Tab1Page implements OnInit {
+export class Tab1Page implements OnInit, OnDestroy {
 
   reportesPE: any[] = [];
   reportesFI: any[] = [];
   dataUser: any;
+  private routerSub: Subscription;
 
   constructor(
     private http: HttpClient,
@@ -21,6 +24,21 @@ export class Tab1Page implements OnInit {
     this.dataUser = JSON.parse(sessionStorage.getItem('dataUser'));
     this.fetchReportesPE();
     this.fetchReportesFI();
+    this.routerSub = this.route.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        if (event.url === '/tabs-lectura/tab1') {
+          this.dataUser = JSON.parse(sessionStorage.getItem('dataUser'));
+          this.fetchReportesPE();
+          this.fetchReportesFI();
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    if (this.routerSub) {
+      this.routerSub.unsubscribe();
+    }
   }
 
   fetchReportesPE(): void {

@@ -69,9 +69,6 @@ export class TomarLecturaPage implements OnInit {
         this.http.put<any>(`http://localhost:3000/tomarLectura/${this.reporte.id_lectura}`, {lectura: valor}).subscribe(
           data => {
             console.log('Se guardo la lectura PUT');
-            this.commonSrv.successToast('Información guardada con éxito!');
-            this.global.refreshData(true);
-            this.route.navigate(['/tabs-lectura/tab1']);
           },
           err => {
             console.error('Hubo un error al guardar la lectura PUT:', err);
@@ -81,6 +78,12 @@ export class TomarLecturaPage implements OnInit {
         this.http.post<any>(`http://localhost:3000/agregarLecturaHistorica`, {medidor: this.reporte.id_medidor, lectura: valor}).subscribe(
           data => {
             console.log('Se guardo la lectura POST');
+            
+            this.commonSrv.successToast('Información guardada con éxito!');
+            this.global.refreshData(true);
+            this.route.navigate(['tabs-lectura/tab1'] );
+
+            
           },
           err => {
             console.error('Hubo un error al guardar la lectura: POST', err);
@@ -90,9 +93,6 @@ export class TomarLecturaPage implements OnInit {
         this.http.put<any>(`http://localhost:3000/tomarLecturaRepeticion/${this.reporte.id_lectura}`, {lectura: valor, repeticion: this.reporte.repeticion}).subscribe(
           data => {
             console.log('Se guardo la lectura PUT');
-            this.commonSrv.successToast('Información guardada con éxito!');
-            this.global.refreshData(true);
-            this.route.navigate(['/tabs-lectura/tab1']);
           },
           err => {
             console.error('Hubo un error al guardar la lectura PUT:', err);
@@ -102,6 +102,12 @@ export class TomarLecturaPage implements OnInit {
         this.http.post<any>(`http://localhost:3000/agregarLecturaHistorica`, {medidor: this.reporte.id_medidor, lectura: valor}).subscribe(
           data => {
             console.log('Se guardo la lectura POST');
+            
+            this.commonSrv.successToast('Información guardada con éxito!');
+            this.global.refreshData(true);
+            this.route.navigate(['tabs-lectura/tab1'] );
+
+            
           },
           err => {
             console.error('Hubo un error al guardar la lectura POST:', err);
