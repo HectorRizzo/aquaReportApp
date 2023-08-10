@@ -6,6 +6,8 @@ import { GeneralService } from 'src/app/services/general.service';
 import { GlobalService } from 'src/app/services/global.service';
 import { Map,tileLayer,marker } from 'leaflet';
 import { AlertController } from '@ionic/angular';
+import * as L from 'leaflet';
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-tab1',
@@ -38,6 +40,8 @@ export class Tab1Page implements OnInit {
   newMarker: any;
   address: string[];
 
+  maps: any[] = [];
+
   loading = true;
 
   constructor(
@@ -46,6 +50,7 @@ export class Tab1Page implements OnInit {
     private commonSrv: GeneralService,
     private alertController: AlertController,
     private global: GlobalService,
+    private renderer: Renderer2
     ) {
       this.global.getObservable().subscribe(
         (data)=>{
@@ -70,6 +75,20 @@ export class Tab1Page implements OnInit {
 
     this.getCatalogos();
   }
+
+  loadMap(r, i) {
+    const map = L.map('map' + i).setView([r.latitud, r.longitud], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+    }).addTo(map);
+
+    L.marker([r.latitud, r.longitud]).addTo(map)
+      .bindPopup('Ubicación del reporte')
+      .openPopup();
+
+    this.maps.push(map);
+}
 
   getCatalogos() {
     this.loading = true;
@@ -150,6 +169,17 @@ export class Tab1Page implements OnInit {
 
   expand(item: any){
     item.expand = !item.expand;
+    if (item.expand) {
+      if (item.fase === 'EM') {
+      setTimeout(() => {
+          this.loadMap(item, this.reportesEM.indexOf(item));
+      }, 0);
+    } else {
+      setTimeout(() => {
+        this.loadMap(item, this.reportesPR.indexOf(item));
+    }, 0);
+    }
+  }
   }
 
   goAsignarReporte(reporte: any) {

@@ -74,6 +74,8 @@
           </ion-card-header>
 
           <ion-card-content>
+            <ion-card-subtitle><b>Ubicación: </b></ion-card-subtitle>
+            <div [id]="'map' + i" style="height: 300px; width: 100%;"></div>
             <ion-card-subtitle><b>Descripción: </b></ion-card-subtitle>
             {{ r.descripcion }}
           </ion-card-content>
@@ -150,6 +152,7 @@
           </ion-card-header>
 
           <ion-card-content>
+            <div [id]="'map' + i" style="height: 300px; width: 100%;"></div>
             <ion-card-subtitle><b>Descripción: </b></ion-card-subtitle>
             {{ r.comentario_mantenimiento }}
           </ion-card-content>
